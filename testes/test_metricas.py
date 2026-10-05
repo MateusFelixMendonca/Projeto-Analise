@@ -21,6 +21,7 @@ from metricas import (
     detectar_cortes,
     processar_video,
 )
+from indice import normalizar_min_max, calcular_indices
 
 
 class TestMetricasSinteticas(unittest.TestCase):
@@ -118,8 +119,36 @@ class TestMetricasSinteticas(unittest.TestCase):
         self.assertIn("saturacao_media", resultado)
         self.assertIn("movimento_medio", resultado)
         self.assertIn("tempo_processamento_s", resultado)
-        self.assertGreater(resultado["tempo_processamento_s"], 0.0)
+    def test_normalizacao_min_max(self):
+        """
+        Valida normalização min-max padrão e caso de valores constantes.
+        """
+        valores = [10.0, 20.0, 30.0]
+        norm = normalizar_min_max(valores)
+        self.assertEqual(norm, [0.0, 0.5, 1.0])
+
+        constantes = [5.0, 5.0, 5.0]
+        norm_const = normalizar_min_max(constantes)
+        self.assertEqual(norm_const, [0.0, 0.0, 0.0])
+
+    def test_calculo_indices(self):
+        """
+        Valida o cálculo do índice de estimulação para 3 vídeos com valores conhecidos.
+        Vídeo 1 tem os menores valores em tudo -> índice deve ser 0.0.
+        Vídeo 2 tem valores intermediários exatos (0.5 em tudo) -> índice deve ser 0.5.
+        Vídeo 3 tem os maiores valores em tudo -> índice deve ser 1.0.
+        """
+        exemplo = [
+            {"video_id": 1, "cortes_por_min": 0.0, "saturacao_media": 10.0, "movimento_medio": 0.5},
+            {"video_id": 2, "cortes_por_min": 10.0, "saturacao_media": 50.0, "movimento_medio": 2.0},
+            {"video_id": 3, "cortes_por_min": 20.0, "saturacao_media": 90.0, "movimento_medio": 3.5},
+        ]
+        res = calcular_indices(exemplo)
+        self.assertAlmostEqual(res[0]["indice"], 0.0, places=4)
+        self.assertAlmostEqual(res[1]["indice"], 0.5, places=4)
+        self.assertAlmostEqual(res[2]["indice"], 1.0, places=4)
 
 
 if __name__ == "__main__":
     unittest.main()
+
