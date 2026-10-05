@@ -1,3 +1,5 @@
 arquivo,grupo,fonte,link
-exemplo_alta.mp4,alta,TikTok,https://www.tiktok.com/@exemplo/video/1
-exemplo_baixa.mp4,baixa,YouTube,https://www.youtube.com/watch?v=exemplo
+video_alta_1.mp4,alta,TikTok,https://www.tiktok.com/@exemplo/video/101
+video_alta_2.mp4,alta,Instagram Reels,https://www.instagram.com/reel/exemplo202
+video_baixa_1.mp4,baixa,Palestra TED,https://www.youtube.com/watch?v=ted303
+video_baixa_2.mp4,baixa,Entrevista TV Cultura,https://www.youtube.com/watch?v=entrevista404
