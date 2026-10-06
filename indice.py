@@ -2,7 +2,7 @@
 Módulo de Cálculo do Índice de Estimulação Visual (indice.py)
 ------------------------------------------------------------
 Combina as três métricas computacionais (cortes/min, saturação média, movimento médio)
-em um único indicador adimensional ponderado entre 0.0 e 1.0.
+em um único indicador adimensional por média simples (pesos iguais) entre 0.0 e 1.0.
 
 CONCEITO FUNDAMENTAL — ÍNDICE RELATIVO:
 O índice é estritamente relativo ao conjunto amostral de vídeos analisados.

@@ -71,7 +71,7 @@ python main.py processar
 - Se um vídeo do CSV não for encontrado no disco, o programa emite um aviso e continua os demais sem travar.
 
 ### Passo B — Calcular o Índice de Estimulação
-Normaliza as três métricas computadas e calcula o índice de 0 a 1 (média simples com pesos iguais):
+Normaliza as três métricas computadas e calcula o índice de 0 a 1, pela média simples (pesos iguais):
 ```bash
 python main.py indice
 ```
