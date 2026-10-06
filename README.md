@@ -71,7 +71,7 @@ python main.py processar
 - Se um vídeo do CSV não for encontrado no disco, o programa emite um aviso e continua os demais sem travar.
 
 ### Passo B — Calcular o Índice de Estimulação
-Normaliza as três métricas computadas e calcula o índice ponderado de 0 a 1:
+Normaliza as três métricas computadas e calcula o índice de 0 a 1 (média simples com pesos iguais):
 ```bash
 python main.py indice
 ```
@@ -92,7 +92,7 @@ Arquivos gerados na pasta `resultados/`:
 
 ## 5. Como o Índice de Estimulação é Calculado
 
-O índice é obtido através de uma média simples (pesos iguais) das três métricas após passarem por uma **normalização Min-Max**:
+O índice é obtido através de uma **média simples (pesos iguais)** das três métricas após passarem por uma **normalização Min-Max**:
 
 $$\text{Normalizado} = \frac{\text{valor} - \text{mínimo}}{\text{máximo} - \text{mínimo}}$$
 
@@ -123,7 +123,30 @@ O Vídeo A (menores valores em tudo) recebe índice **0.00**, e o Vídeo C (maio
 
 ---
 
-## 6. Limitações do Estudo
+## 6. Resultados Obtidos na Análise (30 Vídeos)
+
+Amostra analisada com $N = 15$ vídeos no grupo **Alta Estimulação** e $N = 15$ vídeos no grupo **Baixa Estimulação**:
+
+| Grupo | Métrica | N | Média | Desvio Padrão | Mediana |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Alta** | **Cortes por minuto** | 15 | **1,81** | 2,61 | 0,00 |
+| **Alta** | **Saturação média (%)** | 15 | **39,45%** | 10,94% | 37,28% |
+| **Alta** | **Movimento médio (Farneback)** | 15 | **3,92** | 3,74 | 2,04 |
+| **Alta** | **Índice de Estimulação (0 a 1)** | 15 | **0,24** | 0,15 | 0,17 |
+| **Alta** | *Tempo de Processamento (s)* | 15 | 67,27s | 61,79s | 85,09s |
+| **Baixa** | **Cortes por minuto** | 15 | **20,81** | 23,10 | 18,42 |
+| **Baixa** | **Saturação média (%)** | 15 | **37,36%** | 12,77% | 34,90% |
+| **Baixa** | **Movimento médio (Farneback)** | 15 | **4,05** | 3,16 | 4,30 |
+| **Baixa** | **Índice de Estimulação (0 a 1)** | 15 | **0,30** | 0,18 | 0,29 |
+| **Baixa** | *Tempo de Processamento (s)* | 15 | 46,83s | 45,89s | 22,96s |
+
+Os gráficos comparativos estão disponíveis em:
+- `resultados/grafico_indice_comparativo.png`
+- `resultados/grafico_metricas_comparativo.png`
+
+---
+
+## 7. Limitações do Estudo
 
 1. **Índice Relativo:** O índice calculado é estritamente **relativo à amostra de vídeos analisada no lote**. Um valor 0.0 não significa ausência absoluta de estímulo em termos universais, mas sim o vídeo com menor estimulação dentro daquele conjunto específico.
 2. **Amostra Reduzida:** O escopo do protótipo foi desenhado para testar e comparar 30 vídeos (15 de alta estimulação e 15 de baixa), servindo como prova de conceito acadêmica.
@@ -131,7 +154,7 @@ O Vídeo A (menores valores em tudo) recebe índice **0.00**, e o Vídeo C (maio
 
 ---
 
-## 7. Como Executar os Testes Automatizados
+## 8. Como Executar os Testes Automatizados
 
 O projeto inclui uma suíte de testes unitários que cria vídeos sintéticos dinamicamente na memória/disco temporário para testar cada métrica sem depender de arquivos externos:
 
