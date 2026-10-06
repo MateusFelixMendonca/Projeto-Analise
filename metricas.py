@@ -72,10 +72,10 @@ def detectar_cortes(
     frames consecutivos.
 
     POR QUE HISTOGRAMAS?
-    Uma tomada contínua (mesmo com movimento de câmera ou pessoas) mantém uma
-    distribuição de cores razoavelmente estável. Quando ocorre um corte para outra
-    cena, o ambiente, a iluminação e as cores mudam bruscamente, gerando uma
-    queda acentuada na correlação entre os histogramas consecutivos.
+    O histograma de cor é a contagem de quantos pixels existem de cada cor.
+    Em quadros consecutivos da mesma cena, a distribuição de cores é muito parecida.
+    Em um corte, a nova cena provoca uma mudança súbita nessa distribuição,
+    gerando uma queda acentuada na correlação entre os histogramas consecutivos.
 
     Retorna:
     - total_cortes: número absoluto de cortes detectados.
@@ -100,6 +100,9 @@ def detectar_cortes(
         # Conversão para HSV: separa matiz (H), saturação (S) e luminosidade (V)
         hsv = cv2.cvtColor(frame_pequeno, cv2.COLOR_BGR2HSV)
 
+        # O histograma de cor é a contagem de quantos pixels existem de cada cor.
+        # Em quadros consecutivos da mesma cena, a distribuição de cores é muito parecida.
+        # Em um corte, a nova cena provoca uma mudança súbita nessa distribuição.
         # Histograma 3D com 8 divisões em cada canal (8x8x8 = 512 faixas)
         hist = cv2.calcHist([hsv], [0, 1, 2], None, [8, 8, 8], [0, 180, 0, 256, 0, 256])
         cv2.normalize(hist, hist, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX)

@@ -8,7 +8,7 @@ Projeto acadêmico desenvolvido para a disciplina de **Gestão de Projetos** (Ci
 
 Este protótipo analisa arquivos de vídeos curtos (máximo de 60 segundos) e extrai computacionalmente três métricas quantitativas de Processamento Digital de Imagens (PDI):
 
-1. **Frequência de cortes por minuto:** Detecta mudanças bruscas de tomada/cena comparando histogramas de cores 3D no espaço de cores HSV entre quadros consecutivos.
+1. **Frequência de cortes por minuto:** Detecta mudanças bruscas de tomada/cena comparando histogramas de cores 3D no espaço de cores HSV entre quadros consecutivos. O histograma de cor é a contagem de quantos pixels existem de cada cor. Em quadros consecutivos da mesma cena, a distribuição de cores é muito parecida. Em um corte, a nova cena provoca uma mudança súbita nessa distribuição.
 2. **Saturação média das cores (%):** Mede a vivacidade e intensidade cromática através da média amostrada do canal $S$ do espaço HSV.
 3. **Quantidade de movimento médio:** Estima o deslocamento físico dos pixels através do algoritmo de **Fluxo Óptico Denso de Gunnar Farneback**, descartando automaticamente intervalos onde ocorreram cortes (para evitar picos falsos de movimento).
 
