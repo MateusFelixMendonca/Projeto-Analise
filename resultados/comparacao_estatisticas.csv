@@ -1,0 +1,11 @@
+grupo,campo,metrica,n,media,desvio_padrao,mediana
+alta,cortes_por_min,Cortes por minuto,15,1.81,2.61,0.0
+alta,saturacao_media,Saturação média (%),15,39.45,10.94,37.28
+alta,movimento_medio,Movimento médio (Farneback),15,3.92,3.74,2.04
+alta,indice,Índice de Estimulação (0 a 1),15,0.24,0.15,0.17
+alta,tempo_processamento_s,Tempo de Processamento (s),15,67.27,61.79,85.09
+baixa,cortes_por_min,Cortes por minuto,15,20.81,23.1,18.42
+baixa,saturacao_media,Saturação média (%),15,37.36,12.77,34.9
+baixa,movimento_medio,Movimento médio (Farneback),15,4.05,3.16,4.3
+baixa,indice,Índice de Estimulação (0 a 1),15,0.3,0.18,0.29
+baixa,tempo_processamento_s,Tempo de Processamento (s),15,46.83,45.89,22.96

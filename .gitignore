@@ -5,5 +5,3 @@ estimulacao.db
 videos/*.mp4
 videos/*.avi
 videos/*.mkv
-resultados/*.png
-resultados/*.csv

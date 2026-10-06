@@ -161,7 +161,8 @@ def calcular_saturacao_media(
 
         # Processa apenas os frames selecionados pela taxa de amostragem
         if frame_idx % passo_frames == 0:
-            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+            frame_pequeno = redimensionar_frame(frame)
+            hsv = cv2.cvtColor(frame_pequeno, cv2.COLOR_BGR2HSV)
             # Canal S é o índice 1
             canal_s = hsv[:, :, 1]
             media_s_frame = float(np.mean(canal_s))
